@@ -1,5 +1,4 @@
-# .NET-MAUI-Register-And-Login-Page
-
+# .NET-MAUI-Sample
 
 ## ScreenShots
 ![Screenshot_1677792793](https://user-images.githubusercontent.com/65598554/222561450-ba769c35-f06a-44d9-ad78-aa1e04621090.png)
