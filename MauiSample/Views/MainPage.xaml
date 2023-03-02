@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="MauiSample.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:local="clr-namespace:MauiSample.Views"
+    xmlns:tabs="http://sharpnado.com"
+    xmlns:viewmodel="clr-namespace:MauiSample.ViewModels"
+    xmlns:views="clr-namespace:MauiSample.Views.MainViews"
+    x:DataType="viewmodel:MainPageViewModel"
+    BackgroundColor="{DynamicResource Secondary}"
+    FlowDirection="RightToLeft"
+    Loaded="ContentPage_Loaded">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="MaterialUnderlinedTabItem" TargetType="tabs:MaterialUnderlinedTabItem">
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="IconOptions" Value="IconOnly" />
+                <Setter Property="UnderlineAllTab" Value="False" />
+                <Setter Property="UnderlineHeight" Value="0" />
+                <Setter Property="FontFamily" Value="Vazir-Bold" />
+                <Setter Property="IconSize" Value="24" />
+                <Setter Property="LabelSize" Value="14" />
+
+                <!--  On Android 11 we have a problem with TouchEffect we have to Reset Effects when it's loaded  -->
+                <Setter Property="tabs:TouchEffect.Color" Value="Transparent" />
+                <!--  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-  -->
+
+                <Setter Property="SelectedTabColor" Value="{DynamicResource Primary}" />
+                <Setter Property="UnselectedLabelColor" Value="{DynamicResource Icons}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!--  StatusBar  -->
+    <Page.Behaviors>
+        <behaviors:StatusBarBehavior
+            x:Name="StatusBar"
+            StatusBarColor="{DynamicResource Secondary}"
+            StatusBarStyle="DarkContent" />
+    </Page.Behaviors>
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <tabs:ViewSwitcher
+            x:Name="Switcher"
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Margin="0"
+            Animate="True">
+            <tabs:DelayedView
+                x:TypeArguments="views:MenuView"
+                AccentColor="{StaticResource Primary}"
+                Animate="True"
+                UseActivityIndicator="True" />
+            <tabs:DelayedView
+                x:TypeArguments="views:HomeView"
+                AccentColor="{StaticResource Primary}"
+                Animate="True"
+                UseActivityIndicator="True" />
+            <tabs:DelayedView
+                x:TypeArguments="views:TransactionsView"
+                AccentColor="{StaticResource Primary}"
+                Animate="True"
+                UseActivityIndicator="True" />
+
+        </tabs:ViewSwitcher>
+
+        <tabs:TabHostView
+            x:Name="Hostview"
+            Grid.Row="1"
+            Margin="20,0,20,15"
+            Padding="22.5,0"
+            BackgroundColor="{DynamicResource Secondary}"
+            CornerRadius="27.5"
+            HeightRequest="55"
+            HorizontalOptions="CenterAndExpand"
+            IsSegmented="True"
+            Orientation="Horizontal"
+            SegmentedOutlineColor="{DynamicResource SecondaryBackground}"
+            SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}"
+           TabType="Fixed"
+            VerticalOptions="End">
+            <tabs:TabHostView.Shadow>
+                <Shadow
+                    Brush="#595959"
+                    Opacity="0.4"
+                    Radius="27.5"
+                    Offset="0,10" />
+            </tabs:TabHostView.Shadow>
+            <tabs:MaterialUnderlinedTabItem IconImageSource="user" Style="{StaticResource MaterialUnderlinedTabItem}" />
+            <tabs:MaterialUnderlinedTabItem IconImageSource="home" Style="{StaticResource MaterialUnderlinedTabItem}" />
+            <tabs:MaterialUnderlinedTabItem IconImageSource="receipt" Style="{StaticResource MaterialUnderlinedTabItem}" />
+        </tabs:TabHostView>
+
+    </Grid>
+
+</ContentPage>

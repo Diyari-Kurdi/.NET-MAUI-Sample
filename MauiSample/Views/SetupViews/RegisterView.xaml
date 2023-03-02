@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="MauiSample.Views.SetupViews.RegisterView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiSample.Controls"
+    xmlns:viewmodel="clr-namespace:MauiSample.ViewModels.SetupViewModels"
+    x:DataType="viewmodel:RegisterViewModel"
+    BackgroundColor="{DynamicResource Secondary}"
+    FlowDirection="RightToLeft"
+    Loaded="ContentView_Loaded">
+
+    <!--  Resources  -->
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Border">
+                <Setter Property="StrokeShape">
+                    <Setter.Value>
+                        <RoundRectangle CornerRadius="10" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackground}" />
+                <Setter Property="StrokeThickness" Value="0" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="{DynamicResource White}" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                <Setter Property="FontFamily" Value="Vazir-Regular" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="55" />
+                <Setter Property="Padding" Value="14,10" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="{DynamicResource White}" />
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource Gray200}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="{DynamicResource MainText}" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontFamily" Value="Vazir-Regular" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="PlaceholderColor" Value="#616F87" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="Keyboard" Value="Plain" />
+                <Setter Property="HeightRequest" Value="55" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="{DynamicResource Gray300}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource DefaultLabel}" />
+                <Setter Property="FontFamily" Value="Vazir-Light" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="{DynamicResource Gray300}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <Grid
+        Padding="20,0,20,0"
+        HorizontalOptions="Fill"
+        VerticalOptions="Fill">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+
+        <StackLayout
+            Grid.Row="0"
+            FlowDirection="RightToLeft"
+            HorizontalOptions="FillAndExpand"
+            Orientation="Horizontal">
+            <Border
+                Margin="0,10,5,0"
+                Padding="10,0"
+                HorizontalOptions="FillAndExpand">
+                <Entry
+                    x:Name="FirstNameEntry"
+                    Completed="FirstNameEntry_Completed"
+                    HorizontalOptions="FillAndExpand"
+                    Keyboard="Text"
+                    Placeholder="ناوی یەکەم"
+                    ReturnType="Done"
+                    Text="{Binding FirstName}" />
+            </Border>
+            <Border
+                Margin="5,10,0,0"
+                Padding="10,0"
+                HorizontalOptions="FillAndExpand">
+                <Entry
+                    x:Name="LastNameEntry"
+                    Completed="LastNameEntry_Completed"
+                    HorizontalOptions="FillAndExpand"
+                    Keyboard="Text"
+                    Placeholder="ناوی دووەم"
+                    ReturnType="Done"
+                    Text="{Binding LastName}" />
+            </Border>
+
+        </StackLayout>
+
+
+        <Border
+            Grid.Row="1"
+            Margin="0,10,0,0"
+            Padding="10,0">
+            <Entry
+                x:Name="EmailEntry"
+                Completed="EmailEntry_Completed"
+                Keyboard="Email"
+                Placeholder="ناونیشانی ئیمەیڵ"
+                ReturnType="Done"
+                Text="{Binding Email}" />
+        </Border>
+
+        <Border
+            Grid.Row="2"
+            Margin="0,10,0,0"
+            Padding="10,0">
+
+            <Entry
+                x:Name="PasswordEntry"
+                FontSize="8"
+                IsPassword="True"
+                Keyboard="Plain"
+                Placeholder="وشەی نهێنی"
+                Text="{Binding Password}" />
+        </Border>
+
+        <Button
+            Grid.Row="3"
+            Margin="0,20,0,0"
+            Command="{Binding RegisterBtnCommand}"
+            FontSize="16"
+            Text="تۆماربوون"
+            TextColor="White"
+            VerticalOptions="Center" />
+
+        <local:Separator Grid.Row="4" />
+
+        <Button
+            Grid.Row="5"
+            Margin="0,0,0,10"
+            BackgroundColor="#4267B2"
+            ContentLayout="right"
+            ImageSource="facebook.svg"
+            Text="بە فەیسبووک تۆماربە"
+            TextColor="White"
+            VerticalOptions="Center" />
+
+        <Button
+            Grid.Row="6"
+            BackgroundColor="{DynamicResource GoogleBtnColor}"
+            ContentLayout="right"
+            ImageSource="colored_google.svg"
+            Text="بە گۆگڵ تۆماربە"
+            TextColor="{DynamicResource GoogleBtnTextColor}"
+            VerticalOptions="Center" />
+
+    </Grid>
+
+
+</ContentView>

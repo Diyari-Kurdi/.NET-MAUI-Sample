@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiSample.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:tabs="http://sharpnado.com"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:views="clr-namespace:MauiSample.Views.SetupViews"
+    Title="LoginPage"
+    BackgroundColor="{DynamicResource SecondaryBackground}"
+    Shell.FlyoutBehavior="Disabled">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="SegmentedTabStyle" TargetType="tabs:SegmentedTabItem">
+                <Setter Property="SelectedTabColor" Value="{DynamicResource Primary}" />
+                <Setter Property="FontFamily" Value="Vazir-Regular" />
+                <Setter Property="LabelSize" Value="18" />
+                <Setter Property="SelectedLabelColor" Value="{DynamicResource White}" />
+                <Setter Property="UnselectedLabelColor" Value="{DynamicResource Gray200}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Page.Behaviors>
+        <toolkit:StatusBarBehavior
+            x:Name="StatusBar"
+            StatusBarColor="{DynamicResource SecondaryBackground}"
+            StatusBarStyle="DarkContent" />
+    </Page.Behaviors>
+
+    <ScrollView Orientation="Vertical">
+        <Grid
+            x:Name="MyGrid"
+            BackgroundColor="{DynamicResource Secondary}"
+            FlowDirection="RightToLeft">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Border
+                Grid.Row="0"
+                BackgroundColor="{DynamicResource SecondaryBackground}"
+                StrokeThickness="-0.2">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="0,0,40,40" />
+                </Border.StrokeShape>
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid Margin="0,0,0,10" HorizontalOptions="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <VerticalStackLayout Grid.ColumnSpan="2" HorizontalOptions="Center">
+
+                            <ImageButton
+                                Grid.Row="0"
+                                Clicked="ThemeChanger_Clicked"
+                                HeightRequest="60"
+                                HorizontalOptions="Center"
+                                Source="logo_transperent_roboto.png"
+                                WidthRequest="60" />
+                        </VerticalStackLayout>
+
+                        <Label
+                            Grid.Row="1"
+                            FontFamily="Vazir-SemiBold"
+                            FontSize="28"
+                            HorizontalOptions="Start"
+                            Text="بەخێربێیت!"
+                            TextColor="{DynamicResource MainText}" />
+                        <Label
+                            Grid.Row="2"
+                            FontFamily="Vazir-Light"
+                            FontSize="11.8"
+                            HorizontalOptions="Start"
+                            Text="بەشداربە و ببەرەوە لەگەڵمان"
+                            TextColor="{DynamicResource DefaultLabel}" />
+                    </Grid>
+                    <tabs:TabHostView
+                        x:Name="TabHostView"
+                        Grid.Row="1"
+                        Margin="0,0"
+                        BackgroundColor="{DynamicResource SecondaryBackground}"
+                        CornerRadius="30"
+                        FlowDirection="RightToLeft"
+                        HeightRequest="60"
+                        HorizontalOptions="Fill"
+                        IsSegmented="True"
+                        SegmentedHasSeparator="True"
+                        SegmentedOutlineColor="{DynamicResource Primary}"
+                        SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay, FallbackValue=0}">
+                        <tabs:SegmentedTabItem Label="چوونەژوور" Style="{StaticResource SegmentedTabStyle}" />
+                        <tabs:SegmentedTabItem Label="تۆماربوون" Style="{StaticResource SegmentedTabStyle}" />
+                    </tabs:TabHostView>
+                </Grid>
+            </Border>
+
+            <tabs:ViewSwitcher
+                x:Name="Switcher"
+                Grid.Row="1"
+                Grid.RowSpan="3"
+                Margin="0,15,0,0"
+                Animate="True"
+                BackgroundColor="{DynamicResource Secondary}">
+                <tabs:LazyView
+                    x:TypeArguments="views:LoginView"
+                    AccentColor="{DynamicResource Primary}"
+                    Animate="True"
+                    UseActivityIndicator="True" />
+                <tabs:DelayedView
+                    x:TypeArguments="views:RegisterView"
+                    AccentColor="{DynamicResource Primary}"
+                    Animate="True"
+                    UseActivityIndicator="True" />
+            </tabs:ViewSwitcher>
+        </Grid>
+
+    </ScrollView>
+</ContentPage>
+
+

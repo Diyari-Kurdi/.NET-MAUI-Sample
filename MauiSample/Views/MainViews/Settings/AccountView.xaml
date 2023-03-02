@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiSample.Views.MainViews.Settings.AccountView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:MauiSample.ViewModels.MainViewsModels.Settings"
+    x:DataType="viewmodel:AccountViewModel"
+    BackgroundColor="{DynamicResource Secondary}"
+    FlowDirection="RightToLeft">
+
+    <ContentPage.Resources>
+        <Style x:Key="Border" TargetType="Border">
+            <Setter Property="StrokeShape">
+                <Setter.Value>
+                    <RoundRectangle CornerRadius="10" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Stroke" Value="{DynamicResource SecondaryBackground}" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackground}" />
+            <Setter Property="StrokeThickness" Value="0" />
+        </Style>
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="TextColor" Value="{DynamicResource White}" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+            <Setter Property="FontFamily" Value="Vazir-Regular" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="HeightRequest" Value="55" />
+            <Setter Property="Padding" Value="14,10" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="{DynamicResource White}" />
+                                <Setter Property="BackgroundColor" Value="{DynamicResource Gray200}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        <Style x:Key="Entry" TargetType="Entry">
+            <Setter Property="TextColor" Value="{DynamicResource MainText}" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="FontFamily" Value="Vazir-Regular" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="PlaceholderColor" Value="#616F87" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="Keyboard" Value="Plain" />
+            <Setter Property="HeightRequest" Value="55" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="{DynamicResource Gray300}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        <Style x:Key="Label" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource DefaultLabel}" />
+            <Setter Property="FontFamily" Value="Vazir-Light" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="{DynamicResource Gray300}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
+
+    <Shell.TitleView>
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Label
+                Margin="50,0,0,0"
+                FontFamily="Vazir-Black"
+                FontSize="18"
+                HorizontalOptions="Center"
+                Text="دەستکاریکردنی هەژمار"
+                TextColor="{DynamicResource MainText}"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+    </Shell.TitleView>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid BackgroundColor="{DynamicResource Secondary}" MaximumHeightRequest="55">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Label
+                Grid.ColumnSpan="2"
+                FontFamily="Vazir-Medium"
+                FontSize="18"
+                HorizontalOptions="Center"
+                Style="{StaticResource Label}"
+                Text="ڕێکخستنی تایبەتییەکان"
+                VerticalOptions="Center" />
+            <Path
+                Grid.Column="1"
+                Margin="0,0,10,0"
+                Aspect="Uniform"
+                Data="{Binding BackButtonIcon}"
+                Fill="{DynamicResource MainText}"
+                HorizontalOptions="Start"
+                MaximumHeightRequest="24"
+                MaximumWidthRequest="24"
+                VerticalOptions="Center">
+                <Path.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SendBackButtonCommand}" />
+                </Path.GestureRecognizers>
+            </Path>
+        </Grid>
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Margin="20" HorizontalOptions="Fill">
+
+                <Border Margin="0,0,0,20" HorizontalOptions="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="100" />
+                    </Border.StrokeShape>
+                    <Grid
+                        BackgroundColor="{DynamicResource MainText}"
+                        HeightRequest="200"
+                        WidthRequest="200">
+                        <Border
+                            Padding="2"
+                            BackgroundColor="{DynamicResource MainText}"
+                            HeightRequest="200"
+                            Stroke="{DynamicResource MainText}">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="100" />
+                            </Border.StrokeShape>
+                            <Border BackgroundColor="{DynamicResource MainText}" Stroke="{DynamicResource MainText}">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="100" />
+                                </Border.StrokeShape>
+                                <Image
+                                    x:Name="ProfilePicture"
+                                    Aspect="AspectFill"
+                                    MaximumHeightRequest="200"
+                                    MaximumWidthRequest="200"
+                                    Source="{Binding ProfilePicture}" />
+                            </Border>
+
+                        </Border>
+
+                        <Grid
+                            Padding="5"
+                            BackgroundColor="{DynamicResource Secondary}"
+                            HeightRequest="34"
+                            Opacity="0.6"
+                            VerticalOptions="End">
+                            <Path
+                                Aspect="Uniform"
+                                Data="{Binding Camera}"
+                                Fill="{DynamicResource Icons}"
+                                HorizontalOptions="Center"
+                                MaximumHeightRequest="24"
+                                MaximumWidthRequest="{Binding Source={x:Reference ProfilePicture}, Path=HeightRequest}"
+                                VerticalOptions="Center">
+                                <Path.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PickAnImageCommand}" />
+                                </Path.GestureRecognizers>
+                            </Path>
+                        </Grid>
+                    </Grid>
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="{DynamicResource Primary}"
+                            Opacity="0.2"
+                            Radius="100"
+                            Offset="0,0" />
+                    </Border.Shadow>
+                </Border>
+
+                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+
+                    <Border
+                        Margin="0,0,7.5,15"
+                        Padding="10,0"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource Border}">
+                        <Entry
+                            Placeholder="ناوی دووەم"
+                            ReturnType="Done"
+                            Style="{StaticResource Entry}" />
+                    </Border>
+                    <Border
+                        Margin="7.5,0,0,15"
+                        Padding="10,0"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource Border}">
+                        <Entry
+                            x:Name="OldPasswordEntry"
+                            Placeholder="ناوی یەکەم"
+                            ReturnType="Done"
+                            Style="{StaticResource Entry}" />
+                    </Border>
+                </StackLayout>
+
+                <Border
+                    Margin="0,0,0,20"
+                    Padding="10,0"
+                    HorizontalOptions="FillAndExpand"
+                    Style="{StaticResource Border}">
+                    <Entry
+                        Placeholder="ئیمەڵ"
+                        ReturnType="Done"
+                        Style="{StaticResource Entry}" />
+                </Border>
+                <VerticalStackLayout Grid.Row="1">
+                    <Button
+                        Margin="0,0,0,15"
+                        BackgroundColor="#4267B2"
+                        Command="{Binding LinkToFacebookCommand}"
+                        ContentLayout="right"
+                        CornerRadius="10"
+                        FontFamily="Vazir-Regular"
+                        FontSize="14"
+                        HeightRequest="55"
+                        ImageSource="facebook.svg"
+                        Text="بەستنەوە بە فەیسبووک"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+
+                    <Button
+                        Margin="0,0,0,25"
+                        BackgroundColor="{DynamicResource GoogleBtnColor}"
+                        Command="{Binding LinkToGoogleCommand}"
+                        ContentLayout="right"
+                        CornerRadius="10"
+                        FontFamily="Vazir-Regular"
+                        FontSize="14"
+                        HeightRequest="55"
+                        ImageSource="colored_google.svg"
+                        Text="بەستنەوە بە گۆگڵ"
+                        TextColor="{DynamicResource GoogleBtnTextColor}"
+                        VerticalOptions="Center" />
+
+                </VerticalStackLayout>
+
+                <Button
+                    Margin="20,0,20,20"
+                    Style="{StaticResource Button}"
+                    Text="پاشەکەوتکردن" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="MauiSample.Views.SetupViews.LoginView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiSample.Controls"
+    xmlns:viewmodel="clr-namespace:MauiSample.ViewModels.SetupViewModels"
+    x:DataType="viewmodel:LoginViewModel"
+    BackgroundColor="{DynamicResource SecondaryBackground}"
+    Loaded="ContentView_Loaded">
+    <!--  Resources  -->
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Border">
+                <Setter Property="StrokeShape">
+                    <Setter.Value>
+                        <RoundRectangle CornerRadius="10" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackground}" />
+                <Setter Property="StrokeThickness" Value="0" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="{DynamicResource White}" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                <Setter Property="FontFamily" Value="Vazir-Regular" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="55" />
+                <Setter Property="Padding" Value="14,10" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="{DynamicResource White}" />
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource Gray200}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="{DynamicResource MainText}" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontFamily" Value="Vazir-Regular" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="PlaceholderColor" Value="#616F87" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="Keyboard" Value="Plain" />
+                <Setter Property="HeightRequest" Value="55" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="{DynamicResource Gray300}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource DefaultLabel}" />
+                <Setter Property="FontFamily" Value="Vazir-Light" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="{DynamicResource Gray300}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+
+    <Grid
+        Padding="20,0,20,0"
+        BackgroundColor="{DynamicResource Secondary}"
+        FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.Row="2"
+            Margin="0,10,0,10"
+            Padding="10,0">
+            <Entry
+                x:Name="EmailEntry"
+                Completed="EmailEntry_Completed"
+                HorizontalOptions="Fill"
+                Placeholder="ئیمەیڵ"
+                ReturnType="Done"
+                Text="{Binding Email}" />
+        </Border>
+
+        <Border Grid.Row="3" Padding="10,0">
+            <!--  This stupid FontSize should be changed in the code behind  -->
+            <Entry
+                x:Name="PasswordEntry"
+                Completed="PasswordEntry_Completed"
+                IsPassword="True"
+                Placeholder="وشەی نهێنی"
+                ReturnType="Done"
+                Text="{Binding Password}" />
+        </Border>
+        <Label
+            Grid.Row="4"
+            Margin="0,5,0,0"
+            FontFamily="Vazir-Light"
+            FontSize="14"
+            HorizontalOptions="Start"
+            Text="وشەی نهێنیت بیرچووە؟"
+            VerticalOptions="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ResetPasswordCommand}" />
+            </Label.GestureRecognizers>
+        </Label>
+        <Button
+            Grid.Row="5"
+            Margin="0,20,0,0"
+            Command="{Binding LoginCommand}"
+            FontSize="16"
+            Text="چوونە ژوورەوە"
+            TextColor="White"
+            VerticalOptions="Center" />
+        <local:Separator Grid.Row="6" />
+        <Button
+            Grid.Row="7"
+            Margin="0,0,0,10"
+            BackgroundColor="#4267B2"
+            ContentLayout="right"
+            ImageSource="facebook.svg"
+            Text="بە فەیسبووک بڕۆ ژوورەوە"
+            TextColor="White"
+            VerticalOptions="Center" />
+
+        <Button
+            Grid.Row="8"
+            BackgroundColor="{DynamicResource GoogleBtnColor}"
+            ContentLayout="right"
+            ImageSource="colored_google.svg"
+            Text="بە گۆگڵ بڕۆ ژوورەوە"
+            TextColor="{DynamicResource GoogleBtnTextColor}"
+            VerticalOptions="Center" />
+    </Grid>
+
+</ContentView>

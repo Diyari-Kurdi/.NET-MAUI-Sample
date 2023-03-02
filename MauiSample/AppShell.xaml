@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiSample.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:home="clr-namespace:MauiSample.Views.MainViews"
+    xmlns:views="clr-namespace:MauiSample.Views"
+    BackgroundColor="{DynamicResource Secondary}"
+    FlyoutBackgroundColor="{DynamicResource Secondary}"
+    FlyoutBehavior="Disabled"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
+    <ShellContent
+        x:Name="LoginPageElement"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        FlyoutItemIsVisible="False"
+        Route="LoginPage" />
+    <ShellContent
+        ContentTemplate="{DataTemplate views:MainPage}"
+        FlyoutItemIsVisible="False"
+        Route="MainPage" />
+</Shell>

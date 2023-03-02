@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="MauiSample.Views.MainViews.TransactionsView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:MauiSample.ViewModels.MainViewsModels"
+    x:DataType="viewmodels:TransactionViewModel"
+    BackgroundColor="{DynamicResource Secondary}"
+    FlowDirection="RightToLeft"
+    Loaded="ContentView_Loaded">
+
+    <Border
+        x:Name="Icon"
+        HorizontalOptions="Center"
+        Stroke="Transparent"
+        VerticalOptions="Center">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="150" />
+        </Border.StrokeShape>
+        <Image
+            Aspect="AspectFill"
+            HeightRequest="300"
+            Source="logo_transperent_roboto"
+            WidthRequest="300" />
+    </Border>
+
+</ContentView>

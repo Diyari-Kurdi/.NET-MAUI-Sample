@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="MauiSample.Views.MainViews.MenuView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:MauiSample.ViewModels.MainViewsModels"
+    x:DataType="viewmodel:MenuViewModel"
+    BackgroundColor="{DynamicResource Secondary}"
+    FlowDirection="RightToLeft"
+    Loaded="ContentView_Loaded">
+    <ScrollView>
+
+        <Grid BackgroundColor="{DynamicResource Secondary}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border
+                Grid.Row="0"
+                Margin="20,20,20,0"
+                BackgroundColor="{DynamicResource SecondaryBackground}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="25" />
+                </Border.StrokeShape>
+                <Grid BackgroundColor="{DynamicResource SecondaryBackground}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Margin="0,20,0,10"
+                        FontFamily="Vazir-Regular"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        Text="پەڕەی کەسی"
+                        TextColor="{DynamicResource MainText}"
+                        VerticalOptions="Center" />
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border
+                            Margin="20,10,20,10"
+                            HorizontalOptions="Center"
+                            Stroke="{DynamicResource Secondary}">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="30" />
+                            </Border.StrokeShape>
+                            <Grid
+                                BackgroundColor="{DynamicResource MainText}"
+                                HeightRequest="60"
+                                WidthRequest="60">
+                                <Border
+                                    BackgroundColor="{DynamicResource MainText}"
+                                    HeightRequest="60"
+                                    Stroke="{DynamicResource MainText}">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="30" />
+                                    </Border.StrokeShape>
+                                    <Border BackgroundColor="{DynamicResource MainText}" Stroke="{DynamicResource MainText}">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="30" />
+                                        </Border.StrokeShape>
+                                        <Image
+                                            x:Name="ProfilePicture"
+                                            Aspect="AspectFill"
+                                            MaximumHeightRequest="60"
+                                            MaximumWidthRequest="60"
+                                            Source="man" />
+                                    </Border>
+
+                                </Border>
+                            </Grid>
+                        </Border>
+
+                        <VerticalStackLayout
+                            Grid.Column="1"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center">
+                            <Label
+                                FontFamily="Vazir-Light"
+                                FontSize="16"
+                                Text="دیاری اسماعیل"
+                                TextColor="{DynamicResource MainText}" />
+                            <Label
+                                FontFamily="Vazir-Light"
+                                FontSize="14"
+                                Text="dyari.ismaeil@outlook.com"
+                                TextColor="{DynamicResource DefaultLabel}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                    <RoundRectangle
+                        Grid.Row="2"
+                        CornerRadius="5"
+                        Fill="{DynamicResource LineColor}"
+                        HeightRequest="2"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="{DynamicResource LineColor}"
+                        StrokeThickness="1" />
+                    <Grid Grid.Row="3" Margin="0,0,0,10">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ToggleSwitcherCommand}" />
+                        </Grid.GestureRecognizers>
+                        <Label
+                            Margin="20,0,0,0"
+                            FontFamily="Vazir-Light"
+                            FontSize="16"
+                            Text="دۆخی تاریکی"
+                            TextColor="{DynamicResource MainText}"
+                            VerticalOptions="Center" />
+                        <Switch
+                            x:Name="IsDarkSwitcher"
+                            Margin="0,0,10,0"
+                            HorizontalOptions="End"
+                            IsToggled="{Binding IsToggled, Mode=TwoWay}" />
+                    </Grid>
+                </Grid>
+
+            </Border>
+            <Grid
+                Grid.Row="1"
+                Padding="20"
+                BackgroundColor="{DynamicResource Secondary}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Margin="0,0,0,20"
+                        FontFamily="Vazir-Regular"
+                        FontSize="18"
+                        Text="ڕێکخستنی هەژمار"
+                        TextColor="{DynamicResource MainText}" />
+
+                    <Button
+                        Grid.Row="1"
+                        BackgroundColor="{DynamicResource SecondaryBackground}"
+                        Command="{Binding ChangePasswordCommand}"
+                        CornerRadius="10"
+                        FontFamily="Vazir-Regular"
+                        FontSize="14"
+                        HeightRequest="55"
+                        Text="گۆڕینی وشەی نهێنی"
+                        TextColor="{DynamicResource MainText}" />
+                    <Path
+                        Grid.Row="1"
+                        Margin="10,0,0,0"
+                        Aspect="Uniform"
+                        Data="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+                        Fill="{DynamicResource Primary}"
+                        HeightRequest="24"
+                        HorizontalOptions="Start"
+                        WidthRequest="24" />
+                    <Button
+                        Grid.Row="2"
+                        Margin="0,10,0,0"
+                        BackgroundColor="{DynamicResource SecondaryBackground}"
+                        Command="{Binding AccountCommand}"
+                        CornerRadius="10"
+                        FontFamily="Vazir-Regular"
+                        FontSize="14"
+                        HeightRequest="55"
+                        Text="دەستکاریکردنی هەژمار"
+                        TextColor="{DynamicResource MainText}" />
+                    <Path
+                        Grid.Row="2"
+                        Margin="10,10,0,0"
+                        Aspect="Uniform"
+                        Data="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+                        Fill="{DynamicResource Primary}"
+                        HeightRequest="24"
+                        HorizontalOptions="Start"
+                        WidthRequest="24" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Margin="0,20,0,20"
+                        FontFamily="Vazir-Regular"
+                        FontSize="18"
+                        Text="بەرنامە"
+                        TextColor="{DynamicResource MainText}" />
+                    <Button
+                        Grid.Row="1"
+                        Margin="0,0,0,0"
+                        BackgroundColor="{DynamicResource SecondaryBackground}"
+                        CornerRadius="10"
+                        FontFamily="Vazir-Regular"
+                        FontSize="14"
+                        HeightRequest="55"
+                        Text="دەربارەی بەرنامە"
+                        TextColor="{DynamicResource MainText}" />
+                    <Path
+                        Grid.Row="1"
+                        Margin="10,10,0,0"
+                        Aspect="Uniform"
+                        Data="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+                        Fill="{DynamicResource Primary}"
+                        HeightRequest="24"
+                        HorizontalOptions="Start"
+                        WidthRequest="24" />
+                    <Button
+                        Grid.Row="2"
+                        Margin="0,10,0,0"
+                        BackgroundColor="{DynamicResource SecondaryBackground}"
+                        CornerRadius="10"
+                        FontFamily="Vazir-Regular"
+                        FontSize="14"
+                        HeightRequest="55"
+                        Text="پرسیارە زۆرباوەکان"
+                        TextColor="{DynamicResource MainText}" />
+                    <Path
+                        Grid.Row="2"
+                        Margin="10,10,0,0"
+                        Aspect="Uniform"
+                        Data="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+                        Fill="{DynamicResource Primary}"
+                        HeightRequest="24"
+                        HorizontalOptions="Start"
+                        WidthRequest="24" />
+                    <VerticalStackLayout Grid.Row="3" Margin="0,20,0,0">
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="MauiSample 1.0.0"
+                            TextColor="{DynamicResource Icons}" />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="یاسا و تایبەتیەکان"
+                            TextColor="Blue"
+                            TextDecorations="Underline" />
+                    </VerticalStackLayout>
+
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </ScrollView>
+</ContentView>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup
+    x:Class="MauiSample.Views.ResetAccountPopUp"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+    xmlns:viewmodel="clr-namespace:MauiSample.ViewModels"
+    x:DataType="viewmodel:ResetPageViewModel"
+    CanBeDismissedByTappingOutsideOfPopup="True"
+    HorizontalOptions="Center"
+    Opened="Popup_Opened"
+    VerticalOptions="Center"
+    Color="Transparent">
+    <Border
+        BackgroundColor="{DynamicResource Secondary}"
+        Stroke="{DynamicResource Secondary}"
+        StrokeThickness="0">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="40" />
+        </Border.StrokeShape>
+        <VerticalStackLayout Padding="20" BackgroundColor="{DynamicResource Secondary}">
+            <Label
+                FlowDirection="RightToLeft"
+                FontAttributes="Bold"
+                FontFamily="Vazir-Bold"
+                FontSize="24"
+                HorizontalOptions="Center"
+                Text="کێشە نییە!"
+                TextColor="{DynamicResource Primary}" />
+            <Label
+                FlowDirection="RightToLeft"
+                FontFamily="Vazir-Light"
+                FontSize="14"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="ناونیشانی ئیمەیڵەکەت بنووسە لە ماوەیەکی کەمدا پۆستەی گۆڕینی وشەی نهێنیت پێ دەگات."
+                TextColor="{DynamicResource DefaultLabel}" />
+            <Border
+                Margin="0,20,0,5"
+                Padding="10,0"
+                VerticalOptions="CenterAndExpand">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="StrokeShape">
+                            <Setter.Value>
+                                <RoundRectangle CornerRadius="10" />
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackground}" />
+                        <Setter Property="StrokeThickness" Value="0" />
+                    </Style>
+                </Border.Style>
+                <Entry
+                    x:Name="EmailEntry"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Fill"
+                    HorizontalTextAlignment="Center"
+                    Keyboard="Email"
+                    Placeholder="ئیمەیڵ"
+                    ReturnType="Done"
+                    Text="{Binding Email}">
+                    <Entry.Style>
+                        <Style TargetType="Entry">
+                            <Setter Property="TextColor" Value="{DynamicResource MainText}" />
+                            <Setter Property="BackgroundColor" Value="Transparent" />
+                            <Setter Property="FontFamily" Value="Vazir-Regular" />
+                            <Setter Property="FontSize" Value="16" />
+                            <Setter Property="PlaceholderColor" Value="#616F87" />
+                            <Setter Property="HorizontalTextAlignment" Value="Center" />
+                            <Setter Property="Keyboard" Value="Plain" />
+                            <Setter Property="HeightRequest" Value="55" />
+                            <Setter Property="VisualStateManager.VisualStateGroups">
+                                <VisualStateGroupList>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal" />
+                                        <VisualState x:Name="Disabled">
+                                            <VisualState.Setters>
+                                                <Setter Property="TextColor" Value="{DynamicResource Gray300}" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateGroupList>
+                            </Setter>
+                        </Style>
+                    </Entry.Style>
+                </Entry>
+            </Border>
+
+            <Button
+                Margin="0,5,0,30"
+                Command="{Binding SubmitCommand}"
+                FontSize="16"
+                HeightRequest="50"
+                Text="پێشکەشکردن"
+                VerticalOptions="CenterAndExpand">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                        <Setter Property="FontFamily" Value="Vazir-Regular" />
+                        <Setter Property="FontSize" Value="14" />
+                        <Setter Property="CornerRadius" Value="10" />
+                        <Setter Property="HeightRequest" Value="55" />
+                        <Setter Property="Padding" Value="14,10" />
+                        <Setter Property="VisualStateManager.VisualStateGroups">
+                            <VisualStateGroupList>
+                                <VisualStateGroup x:Name="CommonStates">
+
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="Disabled">
+                                        <VisualState.Setters>
+                                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                                            <Setter Property="BackgroundColor" Value="{DynamicResource Gray200}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateGroupList>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </VerticalStackLayout>
+    </Border>
+</mct:Popup>
